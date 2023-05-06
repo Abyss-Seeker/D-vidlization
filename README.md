@@ -8,6 +8,7 @@ Welcome to extract-mp3, a fun and easy-to-use program that lets you extract the 
 ## How to Use  🔧
 Using extract-mp3 is super easy. Here's what you need to do:
 
+### 0. Download the code. It is in the Vid2MP3 folder, named [main.py](https://github.com/Abyss-Seeker/extract-mp3/blob/main/Vid2MP3/main.py)
 ### 1. Install the required dependencies by running **pip install moviepy**  (as this code relies on it)
 ### 2. Navigate to the directory where your video files are stored (or maybe, the directory of a single video file). Copy the directory.
 ### 3. Run the program by running python by the directory 
