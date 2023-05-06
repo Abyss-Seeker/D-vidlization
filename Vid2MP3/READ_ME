@@ -1,0 +1,15 @@
+Made by @Abyss_Seeker!
+
+This logic behind this isn't that hard, in fact, you can probably understand this easily.
+The code uses moviepy to extract the background music and os to do this in large quantities under one directory.
+I initially coded this for to extract mp3 files from Made in Abyss OSTs :)
+
+The variables can be configured, and you can change the output file type to .wav / .mp3 in the config...
+I haven't experienced it with Mac though, don't know if there would be bugs.
+
+gl hf
+
+=============================================================================
+Install moviepy with 清华镜像:
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple moviepy
+^^^ Paste the above code in terminal (if you have a python environment present) and enter
