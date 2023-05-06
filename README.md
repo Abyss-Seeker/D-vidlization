@@ -32,7 +32,7 @@ Once the program is done extracting the soundtracks, the resulting mp3 or wav fi
 ## Have Fun! 😊
 Yes, yes, I know my code is kinda shit. But it is at least working on my windows and I am still learning! :D
 
-I hope you enjoy using extract-mp3 as much as we enjoyed creating it. Feel free to customize and modify the program to suit your needs. And if you run into any issues, please don't hesitate to post in the issues section.
+I hope you enjoy using extract-mp3 as much as we enjoyed creating it. Feel free to customize and modify the program to suit your needs. And if you run into any issues, please don't hesitate to post in the [issues](https://github.com/Abyss-Seeker/extract-mp3/issues) section.
 
 Thank you so much for reading till here. I really hope I helped you by some means!
 
