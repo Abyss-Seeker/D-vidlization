@@ -8,21 +8,21 @@ Welcome to extract-mp3, a fun and easy-to-use program that lets you extract the 
 ## How to Use  🔧
 Using extract-mp3 is super easy. Here's what you need to do:
 
-###1. Install the required dependencies by running **pip install moviepy**  (as this code relies on it)
-###2. Navigate to the directory where your video files are stored (or maybe, the directory of a single video file). Copy the directory.
-###3. Run the program by running python by the directory 
+### 1. Install the required dependencies by running **pip install moviepy**  (as this code relies on it)
+### 2. Navigate to the directory where your video files are stored (or maybe, the directory of a single video file). Copy the directory.
+### 3. Run the program by running python by the directory 
 3.1 Just follow the instructions and input the directory you copied and the output directory you want (entering nothing would result in the output being in the default directory (you can find that in the config section of code)
 3.2 PLEASE DO NOT PUT ' or " on both sides of the directory!
-###4. Sit back, relax, and let the code do the rest!
+### 4. Sit back, relax, and let the code do the rest!
 
 ## Supported Formats 📹
 extract-mp3 supports the following video formats:
-**- .webm
+- .webm
 - .mov
 - .mp4
 - .avi
 - .ogv
-- .mkv**
+- .mkv
 
 ## Output 💾
 You can alter the output form in the "config" section in the code. All outputs moviepy supports are available (mp3, wav, etc.)
