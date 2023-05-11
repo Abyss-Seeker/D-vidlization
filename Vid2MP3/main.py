@@ -23,7 +23,7 @@ if path[-4:].lower() in video_file_suffixes:
         output_dir_pass = 1
         output_dir = input('Please input path of output as an:'
                            ' [absolute directory] or'
-                           ' [nothing] to continue with default: ').strip()
+                           ' leave it blank to continue with default: ').strip()
         if output_dir == '':
             _ = path.split(dir_mark)
             if len(_) > 1:
@@ -62,7 +62,7 @@ else:
         output_dir_pass = 1
         output_dir = input('Please input path of output as an:'
                            ' [absolute directory] or'
-                           ' [nothing] to continue with default: ').strip()
+                           ' leave it blank to continue with default: ').strip()
         if output_dir != '':
             if os.path.exists(output_dir):
                 output_dir_confirm = input('The path already exists. Are you sure? [Y/N]: ').strip().upper()
