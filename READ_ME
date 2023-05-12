@@ -1,0 +1,7 @@
+好久之前写的READ_ME了。现在删了，懒得改，之后改吧。
+Too lazy to have one, lol
+
+=============================================================================
+Install moviepy with 清华镜像:
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple moviepy
+^^^ Paste the above code in terminal (if you have a python environment present) and enter
