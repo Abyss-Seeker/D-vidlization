@@ -2,11 +2,19 @@
 # pip install -i https://pypi.tuna.tsinghua.edu.cn/simple moviepy
 # Coded by @Abyss_Seeker!
 
-
-import moviepy.editor as mp
 import os
-from time import asctime as t
 
+try:
+    import moviepy.editor as mp
+except:
+    try:
+        os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple moviepy')
+    except:
+        os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple moviepy')
+finally:
+    import moviepy.editor as mp
+
+from time import asctime as t
 
 # This is just a note
 # log.insert('end', f'ERROR: Probably invalid path: {path}\n')
@@ -16,7 +24,8 @@ from time import asctime as t
 tail = '/extracts'  # Config this to change the output path
 
 
-def vid2mp3(path: str, output_path: str, log=None, output_dir_tail=tail, output_format='mp3'):  # input_path, output_path, log text box path, output_dir, output_format
+def vid2mp3(path: str, output_path: str, log=None, output_dir_tail=tail,
+            output_format='mp3'):  # input_path, output_path, log text box path, output_dir, output_format
     if log is not None:
         log.insert('end', f'{t()}\n')
         log.see('end')
@@ -51,7 +60,7 @@ def vid2mp3(path: str, output_path: str, log=None, output_dir_tail=tail, output_
                 if os.path.exists(output_dir):
                     config['output_dir'] = output_dir
 
-        print('-'*50, '\n', config, '\n', '-'*50)
+        print('-' * 50, '\n', config, '\n', '-' * 50)
         if log is not None:
             log.insert('end', f'{"-" * 50}\n{config}\n{"-" * 50}\n')
             log.see('end')
@@ -84,7 +93,7 @@ def vid2mp3(path: str, output_path: str, log=None, output_dir_tail=tail, output_
             if output_dir != '':
                 config['output_dir'] = output_dir
 
-        print('-'*50, '\n', config, '\n', '-'*50)
+        print('-' * 50, '\n', config, '\n', '-' * 50)
         if log is not None:
             log.insert('end', f'{"-" * 50}\n{config}\n{"-" * 50}\n')
             log.see('end')
@@ -98,9 +107,11 @@ def vid2mp3(path: str, output_path: str, log=None, output_dir_tail=tail, output_
         process_len = len(file_names)
         current = 0
         for file_name in file_names:
-            if file_name[-4:].lower() in video_file_suffixes:  # This would actually yield issues if folder name ends in webm (lazy)
+            if file_name[
+               -4:].lower() in video_file_suffixes:  # This would actually yield issues if folder name ends in webm (lazy)
                 file_dir = path + '/' + file_name
-                pure_file_name = file_name[:-5] if file_name[-4:].lower() == 'webm' else file_name[:-4]  # No .mp4 only name
+                pure_file_name = file_name[:-5] if file_name[-4:].lower() == 'webm' else file_name[
+                                                                                         :-4]  # No .mp4 only name
                 # pure_file_name = file_name[:-4].split('（')[1][:-1]  # For my made in abyss music use only
                 video = mp.VideoFileClip(file_dir)
                 audio = video.audio
@@ -120,10 +131,9 @@ def vid2mp3(path: str, output_path: str, log=None, output_dir_tail=tail, output_
                 log.see('end')
                 log.update()
 
-
-    print('\n'+'='*50)
+    print('\n' + '=' * 50)
     if log is not None:
-        log.insert('end', f"\n{'='*50}\n")
+        log.insert('end', f"\n{'=' * 50}\n")
         log.update()
         log.see('end')
     print(f"Success. The files in {path} \n have been written to directory {config['output_dir']}")

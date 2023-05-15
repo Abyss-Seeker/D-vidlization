@@ -4,8 +4,19 @@
 
 import json
 import os
-import requests
-from lxml import etree
+try:
+    import requests
+    from lxml import etree
+except:
+    try:
+        os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests')
+        os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple lxml')
+    except:
+        os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple requests')
+        os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple lxml')
+finally:
+    import requests
+    from lxml import etree
 from ExtractAudio import vid2mp3
 from time import asctime as t
 
