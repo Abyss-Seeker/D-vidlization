@@ -148,7 +148,7 @@ class Win(WinGUI):
     def menu_lhk7lvjf(self,parent):
         menu = Menu(parent,tearoff=False)
         menu.add_command(label="Audio edit",)
-        menu.add_command(label="bilibili web crawl",command=self.LaunchBilibiliCrawlerGUI)
+        menu.add_command(label="bilibili / youtube web crawl",command=self.LaunchBilibiliCrawlerGUI)
         return menu
     def create_menu(self):
         menu = Menu(self,tearoff=False)

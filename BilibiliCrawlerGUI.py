@@ -1,14 +1,10 @@
-"""
-本代码由[Tkinter布局助手]生成
-当前版本:3.3.0
-官网:https://www.pytk.net/tkinter-helper
-QQ交流群:788392508
-"""
 from tkinter import *
 from tkinter.ttk import *
 from typing import Dict
 import HelpFunctions
 import BilibiliCrawler
+import YoutubeCrawler
+import os
 
 class WinGUI(Toplevel):
     widget_dic: Dict[str, Widget] = {}
@@ -35,9 +31,14 @@ class WinGUI(Toplevel):
         self.widget_dic["tk_button_DownloadButton"] = self.__tk_button_DownloadButton(self)
         self.widget_dic["tk_label_LogNote"] = self.__tk_label_LogNote(self)
         self.widget_dic["tk_text_Log"] = self.__tk_text_Log(self)
+        with open('./Resources/info.txt', 'r') as f:
+            open_help_var = int(f.read())
+            if open_help_var == 1:
+                help_instance = HelpFunctions.BilibiliCrawlerHelp(self)
+
 
     def __win(self):
-        self.title("Bilibili Audio Crawler")
+        self.title("Bilibili & YouTube Audio Crawler")
         # 设置窗口大小、居中
         width = 600
         height = 400
@@ -62,8 +63,8 @@ class WinGUI(Toplevel):
         bar.lower(widget)
 
     def __tk_label_BVNumber(self,parent):
-        label = Label(parent,text="BV number:",anchor="center")
-        label.place(x=30, y=20, width=116, height=30)
+        label = Label(parent,text="BV / V / List number:",anchor="center")
+        label.place(x=30, y=20, width=126, height=30)
         return label
 
     def __tk_input_BVNumberInput(self,parent):
@@ -77,7 +78,7 @@ class WinGUI(Toplevel):
         return btn
 
     def __tk_label_BVNumberHelpNote(self,parent):
-        label = Label(parent,text="How to find \nBV Number",anchor="center")
+        label = Label(parent,text="How to find \nThe Numbers",anchor="center",font=('Arial',8))
         label.place(x=500, y=10, width=80, height=54)
         return label
 
@@ -129,7 +130,7 @@ class WinGUI(Toplevel):
 
     def __tk_label_RightLabel(self,parent):
         label = Label(parent,text="P",anchor="center")
-        label.place(x=310, y=160, width=50, height=30)
+        label.place(x=320, y=160, width=15, height=30)
         return label
 
     def __tk_label_AudioOutputFormat(self,parent):
@@ -144,7 +145,8 @@ class WinGUI(Toplevel):
         return cb
 
     def __tk_label_PNumberNote(self,parent):
-        label = Label(parent,text="*If you are only crawling one video's audio or only crawling the first P, you can leave these two blank",anchor="center", font=('Arial',8))
+        label = Label(parent,text="*If you are only crawling one video's audio or only crawling the first P, you can leave these two blank\n"
+                                  "*If you are crawling a Youtube List, you can also use this! Treat the P as video episodes in the list.",anchor="center", font=('Arial',8))
         label.place(x=10, y=190, width=581, height=30)
         return label
 
@@ -182,33 +184,39 @@ class Win(WinGUI):
         self.config(menu=self.create_menu())
     def create_menu(self):
         menu = Menu(self,tearoff=False)
-        menu.add_command(label="Help",command=self.BilibiliAudioCrawlerHelp)
+        menu.add_command(label="Help", command=self.BilibiliAudioCrawlerHelp)
         return menu
     def BilibiliAudioCrawlerHelp(self):  # TODO
-        print("点击了菜单")
+        help_instance = HelpFunctions.BilibiliCrawlerHelp(self)
 
     def BVNumberHelp(self,evt):
         HelpFunctions.BVNumberHelp()
 
-    def ShowDefaultPathBilibili(self,evt):  # TODO
-        print("<Button-1>事件未处理",evt)
+    def ShowDefaultPathBilibili(self,evt):
+        HelpFunctions.Show_Default_Path_Bilibili()
 
     def Download(self,evt):
-        BV_num = self.widget_dic["tk_input_BVNumberInput"].get()
+        mode = 0
+        BV_num = self.widget_dic["tk_input_BVNumberInput"].get().strip()
         output_path = self.widget_dic["tk_text_AudioOutputPathInput"].get("1.0", 'end').strip()
         output_format = self.widget_dic["tk_select_box_lhoqevnz"].get().lstrip('.')
-        p_start = self.widget_dic["tk_input_StartPInput"].get()
+        p_start = self.widget_dic["tk_input_StartPInput"].get().strip()
+        if BV_num[:2] == 'BV':
+            mode = 1  # Bilibili
         if p_start == '':
             p_start = 1
         else:
             p_start = int(p_start)
-        p_end = self.widget_dic["tk_input_EndPInput"].get()
+        p_end = self.widget_dic["tk_input_EndPInput"].get().strip()
         if p_end == '':
             p_end = 1
         else:
             p_end = int(p_end)
         log = self.widget_dic["tk_text_Log"]
-        if output_format != '':
+
+        ##################################
+
+        if output_format != '' and mode == 1:
             try:
                 BilibiliCrawler.BilibiliAudioDownload(bv=BV_num, p_start=p_start, p_end=p_end, log=log, output_path=output_path, output_format=output_format)
             except Exception as e:
@@ -218,7 +226,7 @@ class Win(WinGUI):
                 print('An Error has occurred. Please check the log.')
             # BilibiliCrawler.BilibiliAudioDownload(bv=BV_num, p_start=p_start, p_end=p_end, log=log,
             #                                       output_path=output_path, output_format=output_format)
-        else:
+        elif output_format == '' and mode == 1:
             try:
                 BilibiliCrawler.BilibiliAudioDownload(bv=BV_num, p_start=p_start, p_end=p_end, log=log, output_path=output_path)
             except Exception as e:
@@ -228,6 +236,48 @@ class Win(WinGUI):
                 print('An Error has occurred. Please check the log.')
             # BilibiliCrawler.BilibiliAudioDownload(bv=BV_num, p_start=p_start, p_end=p_end, log=log,
             #                                       output_path=output_path)
+        elif mode == 0:
+            if len(BV_num) == 11:
+                if output_format != '':
+                    try:
+                        YoutubeCrawler.YoutubeAudioDownload(v=BV_num, log=log, output_path=output_path, output_format=output_format)
+                    except Exception as e:
+                        # Log the error message
+                        log.insert('end', f"Error: {e}\n")
+                        log.see('end')
+                        print('An Error has occurred. Please check the log.')
+                elif output_format == '':
+                    try:
+                        YoutubeCrawler.YoutubeAudioDownload(v=BV_num, log=log, output_path=output_path)
+                    except Exception as e:
+                        # Log the error message
+                        log.insert('end', f"Error: {e}\n")
+                        log.see('end')
+                        print('An Error has occurred. Please check the log.')
+            elif len(BV_num) == 34:
+                if output_format != '':
+                    try:
+                        YoutubeCrawler.YoutubeAudioDownloadList(listnum=BV_num, p_start=p_start, p_end=p_end, log=log, output_path=output_path, output_format=output_format)
+                    except Exception as e:
+                        # Log the error message
+                        log.insert('end', f"Error: {e}\n")
+                        log.see('end')
+                        print('An Error has occurred. Please check the log.')
+                elif output_format == '':
+                    try:
+                        YoutubeCrawler.YoutubeAudioDownloadList(listnum=BV_num, p_start=p_start, p_end=p_end, log=log, output_path=output_path)
+                    except Exception as e:
+                        # Log the error message
+                        log.insert('end', f"Error: {e}\n")
+                        log.see('end')
+                        print('An Error has occurred. Please check the log.')
+
+        else:
+            log.insert('end', "A RANDOM ERROR HAS OCCURRED. This shouldn't happen though. Weird. Check your inputs")
+            log.see('end')
+            print('An Error has occurred. Please check the log.')
+
+        ############################################
 
     def __event_bind(self):
         self.widget_dic["tk_button_BVNumberHelp"].bind('<Button-1>',self.BVNumberHelp)

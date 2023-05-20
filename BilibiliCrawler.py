@@ -1,22 +1,31 @@
-# This code is modified from the zhihu article https://zhuanlan.zhihu.com/p/148988473 by 程序猿城南
+# This code is inspired by the zhihu article https://zhuanlan.zhihu.com/p/148988473 by 程序猿城南
 # There are still some major issues when u want to crawl some of the old videos but
+# 别开代理！别开代理！别开代理！
 # Yeah.
 
 import json
 import os
+import re
 try:
     import requests
     from lxml import etree
+    from pytube import YouTube
+    from bs4 import BeautifulSoup
 except:
     try:
         os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests')
         os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple lxml')
+        os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pytube')
+        os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple bs4')
     except:
         os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple requests')
         os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple lxml')
+        os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pytube')
+        os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple bs4')
 finally:
     import requests
     from lxml import etree
+    from bs4 import BeautifulSoup
 from ExtractAudio import vid2mp3
 from time import asctime as t
 
@@ -42,6 +51,13 @@ def getBiliBiliAudio(bv, p, log=None, output_path=default_output_path, output_fo
     session = requests.session()
     res = session.get(url=url, headers=headers, verify=False)
     _element = etree.HTML(res.content)
+    # 获取视频名字并转成可以保存的形式
+    soup = BeautifulSoup(res.text, 'html.parser')
+    main_title = soup.find('h1', class_="video-title tit").text
+    try:
+        videoName = re.sub(r'[\\/:*?"<>|\[\]]', '', f'{list_pv[p-1]}-{main_title}')
+    except:
+        videoName = re.sub(r'[\\/:*?"<>|\[\]]', '', main_title)
     # 获取window.__playinfo__的json对象,[20:]表示截取'window.__playinfo__='后面的json字符串
     videoPlayInfo = str(_element.xpath('//head/script[3]/text()')[0].encode('utf-8').decode('utf-8'))[20:]
     videoJson = json.loads(videoPlayInfo)
@@ -60,33 +76,37 @@ def getBiliBiliAudio(bv, p, log=None, output_path=default_output_path, output_fo
         os.makedirs(output_path)
 
     # 获取每一集的名称
-    name = bv + "-" + str(p)
+    name = f'{videoName}({bv}-{p})'
 
 
     # 下载
     if flag == 0:
         print(f'Downloading audio of {name}')
-        log.insert('end', f'Downloading audio of {name}\n')
-        log.see('end')
-        log.update()
+        if log is not None:
+            log.insert('end', f'Downloading audio of {name}\n')
+            log.see('end')
+            log.update()
         fileDownload(homeurl=url, url=audioURL, name=f'{output_path}/{name}_Audio.{output_format}', session=session)  # 记得去. (Output format)
     elif flag == 1:
         print('WARNING!!! THE DOWNLOADED FILE IS PROBABLY FRAGMENTED. JUST ABORT IT IF ANYTHING.')
-        log.insert('end', 'WARNING!!! THE DOWNLOADED FILE IS PROBABLY FRAGMENTED. JUST ABORT IT IF ANYTHING.\n')
-        log.see('end')
-        log.update()
+        if log is not None:
+            log.insert('end', 'WARNING!!! THE DOWNLOADED FILE IS PROBABLY FRAGMENTED. JUST ABORT IT IF ANYTHING.\n')
+            log.see('end')
+            log.update()
         print(f'Downloading video of {name}')
         print('WARNING!!! THE DOWNLOADED FILE IS PROBABLY FRAGMENTED. JUST ABORT IT IF ANYTHING.')
-        log.insert('end', 'WARNING!!! THE DOWNLOADED FILE IS PROBABLY FRAGMENTED. JUST ABORT IT IF ANYTHING.\n')
-        log.see('end')
-        log.update()
+        if log is not None:
+            log.insert('end', 'WARNING!!! THE DOWNLOADED FILE IS PROBABLY FRAGMENTED. JUST ABORT IT IF ANYTHING.\n')
+            log.see('end')
+            log.update()
         if not os.path.exists(os.path.join(output_path, 'additional_vids')):
             os.makedirs(os.path.join(output_path, 'additional_vids'))
         fileDownload(homeurl=url, url=videoURL, name=f'{output_path}/additional_vids/{name}_Audio.mp4', session=session)
         print(f'Extracting audio out of video {name}')
-        log.insert('end', f'Extracting audio out of video {name}\n')
-        log.see('end')
-        log.update()
+        if log is not None:
+            log.insert('end', f'Extracting audio out of video {name}\n')
+            log.see('end')
+            log.update()
         vid2mp3(path=f'{output_path}/additional_vids/{name}_Audio.mp4', output_path=output_path, output_dir_tail='', output_format=output_format)
         #  os.remove(f'{output_path}/{name}_Audio.mp4')
 '''
@@ -130,22 +150,35 @@ def fileDownload(homeurl, url, name, session=requests.session()):
 
 
 def BilibiliAudioDownload(bv, p_start=1, p_end=1, log=None, output_path=default_output_path, output_format='mp3'):
-    log.insert('end', f'{t()}\n')
-    log.see('end')
+    if log is not None:
+        log.insert('end', f'{t()}\n')
+        log.see('end')
     total_num = p_end - p_start + 1
     n = 1
+    if not (p_start == 1 and p_end == 1):  # If some weird asshole wants to download only the first p of a 合集, idk, maybe try p_start = 0 p_end = 1 lol
+        url = f'https://www.bilibili.com/video/{bv}'
+        session = requests.session()
+        res = session.get(url=url, headers=headers, verify=False)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        script = soup.find_all('script')[3].text
+        findLink = re.compile(r'"part":"(.*?)","duration"')
+        global list_pv
+        list_pv = re.findall(findLink, script)
+
     if output_path == '':
         output_path = default_output_path
     for i in range(p_start, p_end+1):
         print(f'Video ({n}/{total_num})')
-        log.insert('end', f'Video ({n}/{total_num}): ')
-        log.see('end')
+        if log is not None:
+            log.insert('end', f'Video ({n}/{total_num}): ')
+            log.see('end')
         getBiliBiliAudio(bv=bv, p=i, log=log, output_path=output_path, output_format=output_format)
         n += 1
     print(f'Success. Audio files have been downloaded to {output_path}')
-    log.insert('end', f'{t()}\n')
-    log.insert('end', f'Success. Audio files have been downloaded to {output_path}\n')
-    log.see('end')
+    if log is not None:
+        log.insert('end', f'{t()}\n')
+        log.insert('end', f'Success. Audio files have been downloaded to {output_path}\n')
+        log.see('end')
 
 
 if __name__ == '__main__':
