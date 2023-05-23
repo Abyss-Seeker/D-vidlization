@@ -6,5 +6,6 @@ oh and in case u don't know how to use, just run gui.py. If it generates an erro
 
 oh oh oh and you may wonder why the fuck does this seem to be like a python program but has mostly HTML / C code component. It's because I just put the ffmpeg source in it (by BtbN). This will be needed in the future, probably. (And also now) (Oh I changed it in gitattributes! wow)
 
-Project by: Jasper H, Lydia C
+Project by: Jasper H, Lydia C\
+
 Special thanks to tester: Tony Luo
