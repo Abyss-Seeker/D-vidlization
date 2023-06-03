@@ -6,6 +6,7 @@ import YoutubeCrawler
 from tkinter import ttk
 from time import sleep
 import webbrowser
+import AudioEdit
 
 
 def Show_Default_Path():
@@ -196,7 +197,7 @@ This is a major widget created for project "D-vidlization"!''', font=('Arial', 1
             ("Q1. Where would the output be saved at?", """It would be saved at the folder of your input of 'Audio Output Path'. 
 If you leave it blank, it would be in the default output directory (click the '?' button beside it to check)."""),
             ("Q2. When do I open VPN/proxy?", """You do that only before you click the Download! Button before CRAWLING YOUTUBE!
-On other times, like when running other programs / crawling Bilibili, make sure to keep VPN/proxy off."""),
+On other times, like when running other     programs / crawling Bilibili, make sure to keep VPN/proxy off."""),
             ("Q3. What is the BV/V/List number? How can I find them?", """They are all numbers from the link of the video / list you want to extract.
             For detailed directions, click the '?' button in the user interface beside 'How to find the numbers'"""),
             ("Q4. Why is there error: 'Error: check_hostname requires server_hostname'?", "You probably left VPN/proxy on when crawling bilibili. Turn them off and try again."),
@@ -263,6 +264,172 @@ github project page - ISSUES
     #     # Print the retrieved text content from Page 1
     #     print("Text content from Page 1:", text_content)
 
+def Show_Default_Path_AudioEdit():
+    default_path_tab = tk.Toplevel()
+    default_path_tab.title('Default_Path')
+    default_path_text = tk.Label(default_path_tab,
+                                 text=f'Your Default Path for Audio Edited audios is: audio_file_path/{AudioEdit.tail}')
+    default_path_text.pack()
+    default_path_tab.mainloop()
+
+
+class AudioEditHelp(tk.Toplevel):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.parent = parent
+        self.title("AudioEdit - HELP")
+        self.geometry("600x400")
+        self.resizable(False, False)
+
+        # Create notebook widget to hold multiple pages
+        self.notebook = ttk.Notebook(self)
+        self.notebook.pack(fill=tk.BOTH, expand=True)
+
+        # Create and add pages
+        self.create_page1()
+        self.create_page2()
+        self.create_page3()
+        self.create_page4()
+
+    def create_page1(self):
+        def alter_show():
+            with open('./Resources/info02.txt', 'r') as f:
+                auto_open_var = int(f.read())
+            with open('./Resources/info02.txt', 'w') as f:
+                if auto_open_var == 0:
+                    f.write('1')
+                else:
+                    f.write('0')
+
+        frame = tk.Frame(self.notebook)
+        self.notebook.add(frame, text="Welcome!")
+
+        title_label = tk.Label(frame, text='A Brief Introduction', font=('Arial', 30))
+        title_label.pack()
+
+        label = tk.Label(frame, text='''Hi there! Welcome to AudioEdit!
+This is a major widget created for project "D-vidlization"!''', font=('Arial', 16), anchor='w')
+        label.pack()
+
+        labellink = tk.Label(frame, text="D-vidlization", fg="blue", cursor="hand2", font=('Arial', 16), width=9, height=1)
+        labellink.place(x=430, y=75)
+        labellink.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/Abyss-Seeker/D-vidlization"))
+
+        can = tk.Label(frame, text='What I can do:')
+        can.pack()
+
+        self.text01 = tk.Text(frame, height=5, width=60)
+        self.text01.pack()
+        self.text01.insert(tk.END,
+                           "To be added")
+
+        cannot = tk.Label(frame, text='What I cannot do:')
+        cannot.pack()
+
+        self.text02 = tk.Text(frame, height=5, width=60)
+        self.text02.pack()
+        self.text02.insert(tk.END,
+                           "To be added")
+
+        note = tk.Label(frame,
+                        text='Feel free to click around the top tabs of this page to view more instructions!\n You can always access to this help by clicking "Help" at the top of the crawler widget.')
+        note.pack()
+
+        note2 = tk.Label(frame,
+                        text='Good Luck, and HAVE FUN!!!', font=('Arial', 8))
+        note2.pack()
+
+        cb1 = tk.Checkbutton(frame, text='Don\'t automatically show this again', command=alter_show)
+        with open('./Resources/info02.txt', 'r') as f:
+            state_num = int(f.read())
+            if state_num == 1:
+                cb1.deselect()
+            elif state_num == 0:
+                cb1.select()
+        cb1.pack(side=tk.RIGHT, anchor=tk.SE)
+
+    def create_page2(self):
+        frame = tk.Frame(self.notebook)
+        self.notebook.add(frame, text="Instructions P1")
+
+        title_label = tk.Label(frame, text='How to Use - Detailed Instructions', font=('Arial', 30))
+        title_label.pack()
+
+        label = tk.Label(frame, text='''Instructions for to use the widget:
+How to use Audio Edit:
+1. Run file TryInitFFmpeg.py (which is in the same folder) with admin authority
+   (Or directly add the path of ffmpeg in this folder (./ffmpeg-master-latest-win64-gpl-shared/bin) to system path if you are familiar with IT)
+    1.0 the following instructions works if you are using windows
+    1.1 Search up cmd in 开始. Click 以管理员身份运行 (or for some computers, 搜索 on the left down corner of your screen)
+    1.2 Redirect the directory to the folder of the project. Search on web if you don't know how, it's easy
+    1.3 type in cmd: python tryinitffmpeg.py
+2. open AudioEditGUI and run the program (you should be able to see a tkinter page on your screen)
+3. "Audio Path" box
+1) if you want to edit only one audio:
+- find the file in your folder, and copy its path, then paste it to the box (*replace the original content)
+2) if you want to edit multiple audio:
+- find the audios you want to edit and put them under the same folder, then, copy the path of the folder and paste it to the box (*replace the original content)
+4. "Audio Output Path" box:
+1) leave it blank if you want the program to output the editted file into a folder caller "extracts" under the same path as your input
+2) find the folder you want it to output to and copy paste its path into the box
+5. "Length Edit" boxes:
+- there are two boxes in total, which marks the start second of your intended clip and the ending second (for ex. 0s~10s for a clip of 10 seconds) 
+- beware that the numbers have to be within the time length of your audio (which you can check by playing your audio)
+- for convinience, you can input -1 to the second box to set the ending second to be the end of the original audio, and 0 for the first box to start from the very beginning
+6. "Loop" box:
+- after editing the length, you can let the clip loop for multiple times by typing a positive integer into the box (for ex. looping a clip with 10 seconds for 2 times results with a 20 seconds long audio)
+*beware that the looping function works after the length edit, so your clip resulted from the previous Length Edit will loop
+''', anchor='w', justify='left', font=('Arial', 8))
+        label.pack()
+
+
+    def create_page3(self):
+        frame = tk.Frame(self.notebook)
+        self.notebook.add(frame, text="Instructions P2")
+
+        title_label = tk.Label(frame, text='How to Use - Detailed Instructions', font=('Arial', 30))
+        title_label.pack()
+
+        label = tk.Label(frame, text='''Instructions for to use the widget:
+7. "Speed Up" box:
+- input a positive number (does not have to be integer) to change the speed of the clip (for example input 2 for double the speed and input 0.5 for half the speed, similar to the changing speed function you see in Bilibili and Youtube)
+8. "Volume Edit" box:
+- works the same as the previous "Speed Up" box, but with volume
+- for the sake of your ear, please make sure you know how loud your audio will be after editting, or else turn down the volume of your computer before listening
+9. "Fade In and Fade Out" boxes:
+- The fisrt box is for how many seconds the audio starts from 0 audio and gradually increase volume till it reaches the original volume to make the audio more start and end more smoothly(ex. Fade in 2 seconds, Fade out 3 seconds)
+- beware that this works after all the above functions (length, loop, speed up, volume)
+10. "3D Sound Effect" box:
+- if you want a the audio to loop around your head (3D looping sound effect), choose a number that is not 0
+- choose a larger number to let the music spin (loop) faster
+11. "Compress" box:
+- if you want to save a compressed copy of your newly editted audio, choose a number that is not 0
+- choose a smaller number for more compress (that is, occupying less space)
+12. Finally, choose the Audio Output Format you want and then press the "Edit Audio!!!" button and wait for program to finish (the tab will not close automatically, and you can continue editing but you may need to change your input)
+''', anchor='w', justify='left', font=('Arial', 8))
+        label.pack()
+
+    def create_page4(self):
+        from PIL import Image, ImageTk
+        frame = tk.Frame(self.notebook)
+        self.notebook.add(frame, text="About")
+        title_label = tk.Label(frame, text='About', font=('Arial', 30))
+        title_label.pack()
+
+        label = tk.Label(frame, text='''This widget is coded by Lydia.
+Originally finished on 23/05/20.
+You can contact us via wechat num:
+    Lydia: CallMeSigma
+Or by github, of course
+    Lydia: CupofCuppucino
+Thank you so much for using it. If there is any issues, please report it to the 
+github project page - ISSUES
+        ''', anchor='w', justify='left', font=('Arial', 12))
+        label.pack()
+
+        labellink = tk.Label(frame, text="ISSUES", fg="blue", cursor="hand2", font=('Arial', 12), width=6, height=1)
+        labellink.place(x=188, y=178)
+        labellink.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/Abyss-Seeker/D-vidlization/issues"))
 
 def init_ffmpeg_help(): # TODO, 但是懒得写
     return
