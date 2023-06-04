@@ -103,7 +103,7 @@ class WinGUI(Toplevel):
         vbar.config(command=text.yview)
         vbar.place(x=682, y=20, width=15, height=39)
         self.scrollbar_autohide(vbar,text)
-        text.insert('end','for example, D:\Coding\MyMusic\cup_of_cuppuccino.mp3')
+        text.insert('end','for example, D:\Coding\MyMusic\cup_of_cuppuccino.mp3\nplease make sure any file name and folder name in your directory does not include space')
         return text
 
     def __tk_label_AudioOutputPath(self,parent):
