@@ -23,7 +23,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href= "https://github.com/CupofCuppuccino/D-vidlization">
+  <a href= "https://github.com/Abyss-Seeker/D-vidlization">
     <img src=".\Resources\icon.ico" alt="Logo" width="150" height="150">
   </a>
 
@@ -32,14 +32,14 @@
   <p align="center">
     Includes Audio Extract, Audio Crawling, various Audio Edit Functions, and also ffmpeg auto setup!
     <br />
-    <a href="https://github.com/CupofCuppuccino/D-vidlization""><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Abyss-Seeker/D-vidlization""><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/CupofCuppuccino/D-vidlization">View Demo</a>
+    <a href="https://github.com/Abyss-Seeker/D-vidlization">View Demo</a>
     ·
-    <a href="https://github.com/CupofCuppuccino/D-vidlization/issues">Report Bug</a>
+    <a href="https://github.com/Abyss-Seeker/D-vidlization/issues">Report Bug</a>
     ·
-    <a href="https://github.com/CupofCuppuccino/D-vidlization/issues">Request Feature</a>
+    <a href="https://github.com/Abyss-Seeker/D-vidlization/issues">Request Feature</a>
   </p>
 </div>
 
@@ -116,8 +116,8 @@ Our program is based on Python, and most of our external libraries are automatic
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-[![D1](./Resources/AudioFunctionsGUI.png "AudioFunctionsGUI")](https://github.com/CupofCuppuccino/D-vidlization/tree/master)
-[![D2](./Resources/AudioPathGUI.png "AudioPathGUI")](https://github.com/CupofCuppuccino/D-vidlization/tree/master)
+[![D1](./Resources/AudioFunctionsGUI.png "AudioFunctionsGUI")](https://github.com/Abyss-Seeker/D-vidlization/tree/master)
+[![D2](./Resources/AudioPathGUI.png "AudioPathGUI")](https://github.com/Abyss-Seeker/D-vidlization/tree/master)
 [![D1](./Resources/ExtractAudio1.png "ExtractAudio1")](https://github.com/Abyss-Seeker/D-vidlization)
 [![D1](./Resources/ExtractAudio1.png "ExtractAudio1")](https://github.com/Abyss-Seeker/D-vidlization)
 
@@ -134,7 +134,7 @@ Our program is based on Python, and most of our external libraries are automatic
 - [] Feature 3
     - [] Nested Feature
 
-See the [open issues](https://github.com/CupofCuppuccino/D-vidlization/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/Abyss-Seeker/D-vidlization/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -173,9 +173,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 CupofCuppuccino - 1928356570@1928356570_client.com
 ![Trial](./Resources/logo.png "creds Stardew Valley")
 
-Abyss-Seeker - to be written
+Abyss-Seeker - abyssseekersss@gmail.com
 
-Project Link: [https://github.com/CupofCuppuccino/D-vidlization](https://github.com/CupofCuppuccino/D-vidlization)
+Project Link: [https://github.com/Abyss-Seeker/D-vidlization](https://github.com/Abyss-Seeker/D-vidlization)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -192,15 +192,15 @@ Project Link: [https://github.com/CupofCuppuccino/D-vidlization](https://github.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
-[contributors-url]: https://github.com/CupofCuppuccino/D-vidlization/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
-[forks-url]: https://github.com/CupofCuppuccino/D-vidlization/network/members
-[stars-shield]: https://img.shields.io/github/stars/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
-[stars-url]: https://github.com/CupofCuppuccino/D-vidlization/stargazers
-[issues-shield]: https://img.shields.io/github/issues/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
-[issues-url]: https://github.com/CupofCuppuccino/D-vidlization/issues
-[license-shield]: https://img.shields.io/github/license/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
-[license-url]: https://github.com/CupofCuppuccino/D-vidlization/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Abyss-Seeker/D-vidlization.svg?style=for-the-badge
+[contributors-url]: https://github.com/Abyss-Seeker/D-vidlization/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Abyss-Seeker/D-vidlization.svg?style=for-the-badge
+[forks-url]: https://github.com/Abyss-Seeker/D-vidlization/network/members
+[stars-shield]: https://img.shields.io/github/stars/Abyss-Seeker/D-vidlization.svg?style=for-the-badge
+[stars-url]: https://github.com/Abyss-Seeker/D-vidlization/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Abyss-Seeker/D-vidlization.svg?style=for-the-badge
+[issues-url]: https://github.com/Abyss-Seeker/D-vidlization/issues
+[license-shield]: https://img.shields.io/github/license/Abyss-Seeker/D-vidlization.svg?style=for-the-badge
+[license-url]: https://github.com/Abyss-Seeker/D-vidlization/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
