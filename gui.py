@@ -12,6 +12,7 @@ import ExtractAudio
 import HelpFunctions
 from time import asctime as t
 import BilibiliCrawlerGUI
+import AudioEditGUI
 
 class WinGUI(Tk):
     widget_dic: Dict[str, Widget] = {}
@@ -147,7 +148,7 @@ class Win(WinGUI):
         self.config(menu=self.create_menu())
     def menu_lhk7lvjf(self,parent):
         menu = Menu(parent,tearoff=False)
-        menu.add_command(label="Audio edit",)
+        menu.add_command(label="Audio edit",command=self.LaunchAudioEditGUI)
         menu.add_command(label="bilibili / youtube web crawl",command=self.LaunchBilibiliCrawlerGUI)
         return menu
     def create_menu(self):
@@ -159,6 +160,9 @@ class Win(WinGUI):
     def LaunchBilibiliCrawlerGUI(self):
         Bilibiliwin = BilibiliCrawlerGUI.Win()
         Bilibiliwin.mainloop()
+    def LaunchAudioEditGUI(self):
+        AudioEditwin = AudioEditGUI.Win()
+        AudioEditwin.mainloop()
     def vid2mp3(self,evt):
         input_path = self.widget_dic["tk_text_VideoPathInput"].get("1.0", 'end').strip()
         output_path = self.widget_dic["tk_text_VideoOutputPathInput"].get("1.0", 'end').strip()
