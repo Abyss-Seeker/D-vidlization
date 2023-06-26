@@ -1,4 +1,3 @@
-# THIS README IS NOT EDITED YET. WAITING FOR YOU TO EDIT~ @CupofCuppuccino
 <div id="top"></div>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
@@ -18,35 +17,29 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href= "https://github.com/CupofCuppuccino/D-vidlization">
+    <img src=".\Resources\icon.ico" alt="Logo" width="150" height="150">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">D-vidlization</h3>
 
   <p align="center">
-    project_description
+    Includes Audio Extract, Audio Crawling, various Audio Edit Functions, and also ffmpeg auto setup!
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/CupofCuppuccino/D-vidlization""><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/CupofCuppuccino/D-vidlization">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/CupofCuppuccino/D-vidlization/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/CupofCuppuccino/D-vidlization/issues">Request Feature</a>
   </p>
 </div>
 
@@ -70,7 +63,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <!--<li><a href="#roadmap">Roadmap</a></li>-->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -83,24 +76,19 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+![Here is a Demonstration of this Program](./Resources/ProductOverview.png "Overview of Program")
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
+
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Python](https://www.python.org)
+	* ffmpeg & moviepy
+* [Tkinter布局助手](https://www.pytk.net/tkinter-helper)
+* [Markdown Guide](https://www.markdownguide.org)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -109,32 +97,17 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Here are the steps for our program~
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Our program is based on Python, and most of our external libraries are automatically downloaded in cmd if the program failed to import them. As for ffmpeg, we included a program to auto initialize it onto user's computer, which makes set ups more convinient.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+1. Download the zip file from github
+2. Unpack it
+3. Run the "gui.py" file
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -143,15 +116,17 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+[![D1](./Resources/AudioFunctionsGUI.png "AudioFunctionsGUI")](https://github.com/CupofCuppuccino/D-vidlization/tree/master)
+[![D2](./Resources/AudioPathGUI.png "AudioPathGUI")](https://github.com/CupofCuppuccino/D-vidlization/tree/master)
+[![D1](./Resources/ExtractAudio1.png "ExtractAudio1")](https://github.com/Abyss-Seeker/D-vidlization)
+[![D1](./Resources/ExtractAudio1.png "ExtractAudio1")](https://github.com/Abyss-Seeker/D-vidlization)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- ROADMAP -->
+<!-- ROADMAP
 ## Roadmap
 
 - [] Feature 1
@@ -159,11 +134,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [] Feature 3
     - [] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/CupofCuppuccino/D-vidlization/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
+-->
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -195,37 +170,37 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+CupofCuppuccino - 1928356570@1928356570_client.com
+![Trial](./Resources/logo.png "creds Stardew Valley")
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Abyss-Seeker - to be written
+
+Project Link: [https://github.com/CupofCuppuccino/D-vidlization](https://github.com/CupofCuppuccino/D-vidlization)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- ACKNOWLEDGMENTS -->
+<!-- ACKNOWLEDGMENTS 
 ## Acknowledgments
 
 * []()
-* []()
-* []()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
+-->
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
+[contributors-url]: https://github.com/CupofCuppuccino/D-vidlization/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
+[forks-url]: https://github.com/CupofCuppuccino/D-vidlization/network/members
+[stars-shield]: https://img.shields.io/github/stars/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
+[stars-url]: https://github.com/CupofCuppuccino/D-vidlization/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
+[issues-url]: https://github.com/CupofCuppuccino/D-vidlization/issues
+[license-shield]: https://img.shields.io/github/license/CupofCuppuccino/D-vidlization.svg?style=for-the-badge
+[license-url]: https://github.com/CupofCuppuccino/D-vidlization/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
